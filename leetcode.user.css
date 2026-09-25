@@ -1,0 +1,805 @@
+/* ==UserStyle==
+@name           Leetcode Tokyo Night
+@namespace      github.com/openstyles/stylus
+@version        1.0
+@description    Tokyo Night for Leetcode - Full Dynamic Layout Support
+@author         Max Novitech @maxnovitech, Compatible with Dynamic Layout
+==/UserStyle== */
+
+@-moz-document domain("leetcode.com") {
+  :root {
+    --bg-dark: #16161e;
+    --bg-code: #12121a;
+    --bg: #1a1b26;
+    --bg-2: #282b3c;
+    --bg-3: #3f4256;
+    --bg-4: #444b6a;
+    --bg-blue: #547bce;
+    --bg-green: #1aa88e;
+    --bg-red: #c34547;
+    --highlight-1: #1e202e;
+    --highlight-2: #2e3448;
+    --blue-accent: #89ddff;
+    --text: #c0caf5;
+    --text-dark: #565f89;
+    --cyan: #7dcfff;
+    --blue: #7aa2f7;
+    --blue-dark: #5c88e6;
+    --orange: #ff9e64;
+    --orange-dark: #e3a144;
+    --red: #f7768e;
+    --red-dark: #db4b4b;
+    --green: #9ece6a;
+    --green-dark: #1abc9c;
+    --purple: #bb9af7;
+
+    /* General */
+    --text-primary: var(--text);
+    --text-secondary: var(--text);
+    --fill-primary: var(--bg-2);
+    --fill-secondary: var(--bg-2);
+    --fill-quaternary: var(--bg);
+    --text-sd-success: var(--red);
+    --text-label-4: var(--red);
+    --text-reverse: var(--bg-dark);
+    --fill-tertiary: var(--bg-2);
+    --border-primary: var(--blue);
+    --border-secondary: var(--bg-2);
+    --border-tertiary: var(--bg-2);
+    --border-quaternary: var(--bg);
+
+    /* Code */
+    --layer-01: var(--bg) !important;
+    --layer-02: var(--bg) !important;
+    --layer-bg-gray: var(--bg-dark) !important;
+  }
+
+  /* Font import via link instead of @import to avoid CSP issues */
+  @font-face {
+    font-family: "Roboto Mono";
+    src: url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap")
+      format("woff2");
+  }
+
+  /* ==================== DYNAMIC LAYOUT SUPPORT ==================== */
+
+  /* Main containers for dynamic layout */
+  [data-qd-layout-mode="desktop"],
+  [data-qd-layout-mode="mobile"],
+  #qd-content,
+  .flexlayout__layout,
+  .flexlayout__tabset,
+  .flexlayout__tabset_tabbar_outer,
+  .flexlayout__tabset_tabbar_inner {
+    background: var(--bg-dark) !important;
+    color: var(--text) !important;
+  }
+
+  /* Flexlayout - Tab styling */
+  .flexlayout__tab_button {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    border-color: var(--bg-2) !important;
+  }
+
+  .flexlayout__tab_button--selected {
+    background: var(--bg-2) !important;
+    color: var(--text) !important;
+    border-color: var(--blue) !important;
+  }
+
+  .flexlayout__tab_button--unselected {
+    background: var(--bg) !important;
+    color: var(--text-dark) !important;
+  }
+
+  .flexlayout__tab_button:hover {
+    background: var(--bg-2) !important;
+    color: var(--text) !important;
+  }
+
+  /* Splitter styling */
+  .flexlayout__splitter {
+    background: var(--bg) !important;
+  }
+
+  .flexlayout__splitter:after {
+    background: var(--bg-2) !important;
+  }
+
+  .flexlayout__splitter:hover:after {
+    background: var(--blue) !important;
+  }
+
+  /* ==================== DARK MODE OVERRIDES ==================== */
+
+  :is(.dark body) {
+    background: var(--bg-dark);
+    color: var(--text);
+  }
+
+  :is(.dark .dark\:bg-\[\#1a1a1a\]) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:bg-\[\#333333\]) {
+    background: var(--bg) !important;
+  }
+
+  :is(.dark .dark\:bg-gray-100),
+  :is(.dark .dark\:text-gray-60) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:bg-white) {
+    background: var(--text) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-layer-bg) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-layer-1),
+  :is(.dark .dark\:bg-dark-layer-2),
+  :is(.dark .dark\:bg-dark-layer-3) {
+    background: var(--bg) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-paper) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-gray-6) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:border-dark-divider-border-2) {
+    border-color: var(--bg-2) !important;
+  }
+
+  .border-dark-label-3 {
+    border-color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-fill-1),
+  :is(.dark .dark\:bg-dark-fill-2),
+  :is(.dark .dark\:bg-dark-fill-3),
+  :is(.dark .dark\:hover\:bg-dark-fill-3:hover) {
+    background: var(--highlight-1) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-fill-4),
+  :is(.dark .dark\:hover\:bg-dark-fill-4:hover) {
+    background: var(--highlight-1) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-gray-5) {
+    background: var(--bg-4) !important;
+  }
+
+  :is(.dark .dark\:hover\:bg-dark-fill-2:hover) {
+    background: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:focus\:bg-dark-fill-2:focus) {
+    background: var(--bg-3) !important;
+  }
+
+  :is(.dark .dark\:text-dark-label-1),
+  :is(.dark .dark\:hover\:text-dark-label-1:hover),
+  .text-label-1,
+  .text-label-1:hover,
+  :is(.dark .dark\:text-dark-label-2),
+  :is(.dark .dark\:hover\:text-dark-label-2:hover),
+  :is(.dark .dark\:text-dark-label-3) {
+    color: var(--text) !important;
+  }
+
+  :is(.dark .dark\:hover\:text-dark-label-3:hover),
+  :is(.dark .dark\:text-dark-label-4) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-label-r) {
+    color: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-gray-4) {
+    color: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-gray-5) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:text-gray-7) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:text-text-primary) {
+    color: var(--text) !important;
+  }
+
+  :is(.dark .dark\:text-text-secondary) {
+    color: var(--text) !important;
+  }
+
+  :is(.dark .dark\:text-text-tertiary) {
+    color: var(--text-dark) !important;
+  }
+
+  /* Loading Content (lc) */
+  :is(.dark .dark\:bg-dark-lc-layer-01) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-lc-fill-01),
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-01:hover) {
+    background: var(--bg-4) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-lc-fill-02),
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-02:hover) {
+    background: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-lc-fill-03),
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-03:hover) {
+    background: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-lc-fill-04),
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-04:hover) {
+    background: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-lc-background-index) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:border-dark-lc-fill-01) {
+    background: var(--bg) !important;
+  }
+
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-02) {
+    background: var(--highlight-1) !important;
+  }
+
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-02:hover) {
+    background: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-text-primary) {
+    color: var(--text) !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-text-secondary) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-text-tertiary) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-text-quaternary) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:border-dark-lc-fill-02) {
+    border-color: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-icon-secondary),
+  :is(.dark .dark\:text-dark-lc-icon-tertiary) {
+    color: var(--text-dark) !important;
+  }
+
+  :is(.dark .dark\:stroke-dark-lc-fill-02) {
+    stroke: var(--bg-2) !important;
+  }
+
+  :is(.dark .group:hover .dark\:group-hover\:text-dark-blue) {
+    color: var(--blue) !important;
+  }
+
+  :is(.dark .dark\:text-dark-blue-s) {
+    color: var(--blue) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-overlay-3) {
+    background: var(--bg) !important;
+  }
+
+  .bg-overlay-2,
+  .bg-overlay-3,
+  .bg-overlay-4,
+  .bg-paper {
+    background: var(--bg) !important;
+  }
+
+  /* Table */
+  :is(.dark .dark\:odd\:bg-dark-layer-1:nth-child(2n + 1)) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:odd\:bg-dark-layer-bg:nth-child(2n + 1)) {
+    background: var(--bg-dark) !important;
+  }
+
+  :is(.dark .dark\:even\:bg-dark-fill-4:nth-child(2n)) {
+    background: var(--bg) !important;
+  }
+
+  .even\:bg-overlay-1:nth-child(2n) {
+    background: var(--bg) !important;
+  }
+
+  tr:nth-of-type(2n + 1) {
+    background: var(--bg-dark) !important;
+  }
+
+  tr:nth-of-type(2n) {
+    background: var(--bg) !important;
+  }
+
+  .grid > :is(.dark .dark\:bg-dark-lc-fill-01),
+  :is(.dark .dark\:hover\:bg-dark-lc-fill-01:hover) {
+    background: var(--highlight-1) !important;
+  }
+
+  /* Transparents */
+  .bg-gray-8 {
+    background-color: black !important;
+  }
+
+  :is(.dark .dark\:text-dark-lc-icon-primary) {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .bg-gradient-to-l {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--bg-dark)
+    ) !important;
+  }
+
+  .flexlayout__tabset-overflowed .flexlayout__tabset_tabbar_inner::after {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--bg)
+    ) !important;
+  }
+
+  .flexlayout__tabset-overflowed .flexlayout__tabset_tabbar_inner::before {
+    background-image: linear-gradient(
+      to left,
+      transparent,
+      var(--bg)
+    ) !important;
+  }
+
+  /* ==================== CODE EDITOR ==================== */
+
+  .mtk1 {
+    color: var(--text) !important;
+  }
+
+  .mtk3 {
+    color: var(--text-dark) !important;
+  }
+
+  .mtk4 {
+    color: var(--blue) !important;
+  }
+
+  .mtk7 {
+    color: var(--orange) !important;
+  }
+
+  .mtk10 {
+    color: var(--green-dark) !important;
+  }
+
+  .mtk11 {
+    color: var(--orange) !important;
+  }
+
+  .mtk14 {
+    color: var(--text) !important;
+  }
+
+  .monaco-editor .line-numbers.active-line-number {
+    color: var(--text) !important;
+  }
+
+  .monaco-editor .line-numbers {
+    color: var(--text-dark) !important;
+  }
+
+  .monaco-editor {
+    background: var(--bg-dark) !important;
+  }
+
+  .monaco-editor .codicon {
+    color: var(--text) !important;
+  }
+
+  .dark .elfjS code {
+    background-color: var(--bg-2) !important;
+    border-color: var(--bg-2) !important;
+    color: var(--text) !important;
+  }
+
+  .monaco-scrollable-element > .scrollbar > .slider {
+    background: var(--bg-2) !important;
+  }
+
+  .monaco-scrollable-element > .scrollbar > .slider:hover {
+    background: var(--bg-3) !important;
+  }
+
+  .decorationsOverviewRuler {
+    display: none !important;
+  }
+
+  .view-line,
+  .line-numbers {
+    font-family: "Roboto Mono", monospace !important;
+  }
+
+  .current-line {
+    background: var(--highlight-1) !important;
+    border-color: var(--highlight-1) !important;
+  }
+
+  .core-guide {
+    box-shadow: 2px 0 0 0 var(--highlight-2) inset !important;
+  }
+
+  .cursor {
+    color: var(--text) !important;
+  }
+
+  .monaco-editor .margin,
+  .monaco-editor .glyph-margin {
+    background: var(--bg) !important;
+  }
+
+  .monaco-editor.focused .selected-text {
+    background-color: var(--blue-dark) !important;
+  }
+
+  .monaco-editor .selected-text {
+    background-color: var(--highlight-2) !important;
+  }
+
+  /* ==================== BUTTONS & INPUTS ==================== */
+
+  .bg-sd-accent {
+    background-color: var(--highlight-1) !important;
+  }
+
+  .bg-sd-card {
+    background: var(--bg) !important;
+  }
+
+  .hover\:bg-sd-secondary\/80 {
+    background: var(--highlight-2) !important;
+  }
+
+  .hover\:bg-sd-secondary\/80:hover {
+    background: var(--highlight-1) !important;
+  }
+
+  .ace-tm,
+  .ace-tm .ace_gutter {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+  }
+
+  .editor {
+    border-color: var(--highlight-1) !important;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    border-color: var(--bg-2) !important;
+  }
+
+  button:hover,
+  input:hover,
+  textarea:hover,
+  select:hover {
+    background: var(--bg-2) !important;
+  }
+
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    background: var(--bg-2) !important;
+    border-color: var(--blue) !important;
+    outline-color: var(--blue) !important;
+  }
+
+  /* ==================== NAVBAR & FOOTER ==================== */
+
+  body,
+  #explore-app {
+    background: var(--bg-dark) !important;
+    color: var(--text) !important;
+  }
+
+  #leetcode-navbar,
+  #footer-root,
+  footer,
+  footer > div,
+  footer li::after {
+    background: var(--bg) !important;
+    border: none !important;
+  }
+
+  footer span,
+  footer a {
+    color: var(--text-dark) !important;
+  }
+
+  .ml-0,
+  .ml-4,
+  #subscribe,
+  .text-brand-orange.mt-1.flex.items-center.text-xs {
+    display: none !important;
+  }
+
+  strong {
+    color: var(--text) !important;
+  }
+
+  ::placeholder {
+    color: var(--text-dark) !important;
+  }
+
+  * {
+    scrollbar-color: var(--bg-2) var(--bg);
+  }
+
+  /* Explore Page */
+  .explore-home-showcase .explore-index-showcase-base .showcase-row::before {
+    background: linear-gradient(
+      to right,
+      var(--bg-dark),
+      rgba(250, 250, 250, 0)
+    ) !important;
+  }
+
+  .explore-home-showcase .explore-index-showcase-base .showcase-row::after {
+    background: linear-gradient(
+      to left,
+      var(--bg-dark),
+      rgba(250, 250, 250, 0)
+    ) !important;
+  }
+
+  .dragscroll-container:hover .scroll-btn:hover {
+    opacity: 0.3 !important;
+  }
+
+  .dragscroll-container:hover .scroll-btn {
+    opacity: 0.1 !important;
+  }
+
+  .explore-card-base .explore-card .start-button-base,
+  .start-button-base,
+  .explore-home-basic .category-title .more-btn,
+  .explore-home-basic .category-title .more-btn:hover {
+    background: var(--highlight-1) !important;
+    box-shadow: none !important;
+  }
+
+  .explore-page-title,
+  .explore-card-base a,
+  .explore-card-base .explore-card .bot-base .big-number,
+  .category-title div,
+  i,
+  .explore-card-base .explore-card .bot-base .big-number {
+    color: var(--text) !important;
+  }
+
+  .explore-heading .back-label,
+  .page-heading .back-label,
+  .explore-heading .page-label,
+  .page-heading .page-label,
+  .explore-card-base
+    .explore-card
+    .bot-base
+    .card-stats
+    .stats.status.complete-precentage,
+  .explore-home-basic .popular-section .title,
+  .explore-card-base .explore-card .bot-base .text-label {
+    color: var(--text-dark) !important;
+    text-shadow: none !important;
+  }
+
+  .explore-card-base .explore-card .top-base .explore-heading .description,
+  .explore-card-base .explore-card .top-base .explore-heading .title {
+    color: var(--text) !important;
+    margin-top: 0 !important;
+  }
+
+  .explore-card-base .explore-card {
+    background: var(--highlight-1) !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .explore-card-base .explore-card:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .doughnut-chart-base {
+    display: none !important;
+  }
+
+  .start-button-base {
+    border: 3px solid var(--text-dark) !important;
+    padding-top: 20px !important;
+  }
+
+  .btn.btn-default,
+  .btn.btn-default:active,
+  .btn.btn-default:active:focus,
+  .btn.btn-default:focus,
+  .problem-category .problem-category-info a:hover {
+    background: var(--highlight-1) !important;
+    color: var(--text) !important;
+    border-color: var(--highlight-2) !important;
+  }
+
+  /* Profile */
+  .text-sd-foreground {
+    color: var(--text) !important;
+  }
+
+  .text-sd-muted-foreground {
+    color: var(--text-dark) !important;
+  }
+
+  .stroke-sd-primary\/20 {
+    stroke: var(--text-dark) !important;
+  }
+
+  /* Main Page */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  b,
+  .msg .since {
+    color: var(--text) !important;
+  }
+
+  .discuss-markdown-container,
+  .side-block .side-block-info,
+  .msg .description {
+    color: var(--text-dark) !important;
+  }
+
+  .storyboard,
+  .storyboard div,
+  hr,
+  .side-block {
+    border-color: var(--bg-2) !important;
+  }
+
+  #lc_sitewide_announcement {
+    background: var(--orange) !important;
+    color: var(--bg-dark) !important;
+  }
+
+  /* ==================== DROPDOWN & SELECT ==================== */
+
+  .dropdown-menu,
+  .dropdown-content,
+  [role="listbox"],
+  [role="option"] {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    border-color: var(--bg-2) !important;
+  }
+
+  [role="option"]:hover,
+  [role="option"][aria-selected="true"] {
+    background: var(--bg-2) !important;
+    color: var(--text) !important;
+  }
+
+  /* ==================== MODALS & DIALOGS ==================== */
+
+  .modal-backdrop,
+  [role="dialog"],
+  .ant-modal,
+  .ant-popover {
+    background: var(--bg-dark) !important;
+    color: var(--text) !important;
+  }
+
+  .ant-modal-content,
+  .ant-popover-inner {
+    background: var(--bg) !important;
+    border-color: var(--bg-2) !important;
+  }
+
+  .ant-modal-header {
+    background: var(--bg-2) !important;
+    border-color: var(--bg-2) !important;
+  }
+
+  .ant-modal-title {
+    color: var(--text) !important;
+  }
+
+  /* ==================== TOOLTIPS ==================== */
+
+  [role="tooltip"],
+  .tooltip,
+  .ant-tooltip-inner {
+    background: var(--bg-2) !important;
+    color: var(--text) !important;
+  }
+
+  /* ==================== LINKS ==================== */
+
+  a {
+    color: var(--blue) !important;
+  }
+
+  a:hover {
+    color: var(--cyan) !important;
+  }
+
+  a:visited {
+    color: var(--purple) !important;
+  }
+
+  /* ==================== MISC ==================== */
+
+  .text-brand-orange {
+    color: var(--orange) !important;
+  }
+
+  .border-dark-label-3 {
+    border-color: var(--text-dark) !important;
+  }
+
+  /* Ensure shadow DOM elements get styled */
+  ::part(*) {
+    background: inherit !important;
+    color: inherit !important;
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg) !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-2) !important;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-3) !important;
+  }
+}
