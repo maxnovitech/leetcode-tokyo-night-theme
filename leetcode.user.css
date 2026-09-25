@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Leetcode Tokyo Night
 @namespace      github.com/openstyles/stylus
-@version        1.0
+@version        1.1
 @description    Tokyo Night for Leetcode - Full Dynamic Layout Support
 @author         Max Novitech @maxnovitech, Compatible with Dynamic Layout
 ==/UserStyle== */
@@ -171,6 +171,16 @@
   :is(.dark .dark\:bg-dark-fill-4),
   :is(.dark .dark\:hover\:bg-dark-fill-4:hover) {
     background: var(--highlight-1) !important;
+  }
+
+  :is(.dark .dark\:bg-dark-gray-2),
+  .bg-dark-gray-2 {
+    background-color: var(--bg-2) !important;
+  }
+
+  :is(.dark .dark\:hover\:bg-dark-gray-2:hover),
+  .hover\:bg-dark-gray-2:hover {
+    background-color: var(--highlight-1) !important;
   }
 
   :is(.dark .dark\:bg-dark-gray-5) {
